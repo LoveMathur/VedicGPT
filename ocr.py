@@ -29,13 +29,14 @@ def pdf_to_text(input_pdf, output_folder):
         
         # Extract text from image
         text = pytesseract.image_to_string(img)
-        all_text.append(f"\n--- Page {page_num + 1} ---\n\n{text}")
+        all_text.append(f"\n## Page {page_num + 1}\n\n{text}")
     
     pdf_document.close()
     
-    # Write all text to a single file
-    output_file = os.path.join(output_folder, f"{os.path.basename(input_pdf)}.txt")
+    # Write all text to a markdown file
+    output_file = os.path.join(output_folder, f"{os.path.splitext(os.path.basename(input_pdf))[0]}.md")
     with open(output_file, "w", encoding="utf-8") as f:
+        f.write(f"# {os.path.splitext(os.path.basename(input_pdf))[0]}\n\n")
         f.write("\n".join(all_text))
     
     print(f"Text extracted and saved to: {output_file}")
