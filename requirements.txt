@@ -1,0 +1,14 @@
+io
+os
+sys
+PIL
+pytesseract
+fitz
+cohere
+langchain
+langchain-community
+langchain-cohere
+faiss-cpu
+gradio
+python-dotenv
+sentence-transformers
